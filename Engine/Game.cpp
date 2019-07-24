@@ -20,20 +20,27 @@
  ******************************************************************************************/
 #include "MainWindow.h"
 #include "Game.h"
+#include <chrono>
+#include "SpriteCodex.h"
+
 
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd )
+	gfx( wnd ),
+	tLeft( Vei2(100,100) )
 {
+	char sudokoStart[9 * 9] =
+	{ '.','.','6','5','.','8','4','.','.','5','2','.','.','.','.','.','.','.','.','8','7','.','.','.','.','3','1','.','.','3','.','1','.','.','8','.','9','.','.','8','6','3','.','.','5','.','5','.','.','9','.','6','.','.','1','3','.','.','.','.','2','5','.','.','.','.','.','.','.','.','7','4','.','.','5','2','.','6','3','.','.' };
+	field = Field(sudokoStart);
 }
 
 void Game::Go()
 {
-	gfx.BeginFrame();	
+	
 	UpdateModel();
 	ComposeFrame();
-	gfx.EndFrame();
+	
 }
 
 void Game::UpdateModel()
@@ -42,4 +49,28 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
+	/*using std::chrono::steady_clock;
+	
+	float durationSeconds = 0;
+	std::chrono::steady_clock::time_point start = steady_clock::now();
+	while (durationSeconds < 1.0f)
+	{
+		auto end = std::chrono::steady_clock::now();
+		std::chrono::duration<float> runtime = end - start;
+		durationSeconds = runtime.count();
+	}
+	*/
+	if (field.SolutionExists(gfx))
+	{
+		//std::cout << "Sudokidoki! First solution found:" << std::endl;
+		//field.Print();
+	}
+	else
+	{
+		//std::cout << "No solution found" << std::endl;
+	}
+
+	
+	
+	
 }

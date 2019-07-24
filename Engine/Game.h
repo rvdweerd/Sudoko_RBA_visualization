@@ -23,6 +23,8 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
+#include "Field.h"
+#include "Vei2.h"
 
 class Game
 {
@@ -40,6 +42,8 @@ private:
 private:
 	MainWindow& wnd;
 	Graphics gfx;
+	Vei2 tLeft;
+	Field field;
 	/********************************/
 	/*  User Variables              */
 	/********************************/

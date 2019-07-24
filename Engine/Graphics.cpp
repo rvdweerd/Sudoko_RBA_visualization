@@ -115,7 +115,7 @@ Graphics::Graphics( HWNDKey& key )
 	vp.Height = float( Graphics::ScreenHeight );
 	vp.MinDepth = 0.0f;
 	vp.MaxDepth = 1.0f;
-	vp.TopLeftX = 0.0f;
+	vp.TopLeftX = 1.0f;
 	vp.TopLeftY = 0.0f;
 	pImmediateContext->RSSetViewports( 1,&vp );
 
@@ -316,7 +316,35 @@ void Graphics::PutPixel( int x,int y,Color c )
 	pSysBuffer[Graphics::ScreenWidth * y + x] = c;
 }
 
+void Graphics::PutPixelTransformed(Vei2 origin, int x, int y, Color c)
+{
+	assert(x >= 0);
+	assert(x < int(Graphics::ScreenWidth));
+	assert(y >= 0);
+	assert(y < int(Graphics::ScreenHeight));
+	
+	int x_in = x - origin.x;
+	int y_in = y - origin.y;
 
+	int x_new = -x_in+16;
+	int y_new = -y_in+16;	
+	
+	x_new += origin.x;
+	y_new += origin.y;
+
+	pSysBuffer[Graphics::ScreenWidth * y_new + x_new] = c;
+}
+
+void Graphics::DrawRect(int x0, int y0, int x1, int y1, Color c)
+{
+	for (int y = y0; y < y1; ++y)
+	{
+		for (int x = x0; x < x1; ++x)
+		{
+			PutPixel(x, y, c);
+		}
+	}
+}
 //////////////////////////////////////////////////
 //           Graphics Exception
 Graphics::Exception::Exception( HRESULT hr,const std::wstring& note,const wchar_t* file,unsigned int line )

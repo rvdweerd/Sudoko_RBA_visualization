@@ -24,6 +24,7 @@
 #include <wrl.h>
 #include "ChiliException.h"
 #include "Colors.h"
+#include "Vei2.h"
 
 class Graphics
 {
@@ -57,6 +58,15 @@ public:
 		PutPixel( x,y,{ unsigned char( r ),unsigned char( g ),unsigned char( b ) } );
 	}
 	void PutPixel( int x,int y,Color c );
+	void PutPixelTransformed(Vei2 origin, int x, int y, Color c);
+
+	void PutPixelTransformed(Vei2 origin, int x, int y, int r, int g, int b)
+	{
+		PutPixelTransformed(origin, x, y, { unsigned char(r),unsigned char(g),unsigned char(b) });
+	}
+	
+	void DrawRect(int x0, int y0, int x1, int y1, Color c);
+	
 	~Graphics();
 private:
 	Microsoft::WRL::ComPtr<IDXGISwapChain>				pSwapChain;
