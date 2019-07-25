@@ -25,6 +25,7 @@
 #include <assert.h>
 #include <string>
 #include <array>
+#include <math.h>
 
 // Ignore the intellisense error "cannot open source file" for .shh files.
 // They will be created during the build sequence before the preprocessor runs.
@@ -323,11 +324,13 @@ void Graphics::PutPixelTransformed(Vei2 origin, int x, int y, Color c)
 	assert(y >= 0);
 	assert(y < int(Graphics::ScreenHeight));
 	
+	float phi = (180) * 3.14125f / 180.0;
+
 	int x_in = x - origin.x;
 	int y_in = y - origin.y;
 
-	int x_new = -x_in+16;
-	int y_new = -y_in+16;	
+	int x_new = int( std::cos(phi)*x_in + std::sin(phi)*y_in+16);
+	int y_new = int(-std::sin(phi)*x_in + std::cos(phi)*y_in+16);	
 	
 	x_new += origin.x;
 	y_new += origin.y;

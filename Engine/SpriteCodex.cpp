@@ -1,10 +1,11 @@
 #include "SpriteCodex.h"
 #include <assert.h>
 
-void SpriteCodex::DrawTile0( const Vei2& pos,Graphics& gfx , Color c_letter, Color c_TileBackground)
+void SpriteCodex::DrawTile0( const Vei2& pos,Graphics& gfx , Color c_letter, Color c_TileLineShade, Color c_Background)
 {
-	Color baseCol = c_TileBackground;
+	Color baseCol = c_TileLineShade;
 	Color digitCol = c_letter;
+	gfx.DrawRect(pos.x, pos.y, pos.x + 16, pos.y + 16, c_Background);
 
 	gfx.PutPixel( 0 + pos.x,0 + pos.y,baseCol );
 	gfx.PutPixel( 1 + pos.x,0 + pos.y,baseCol );
@@ -39,10 +40,11 @@ void SpriteCodex::DrawTile0( const Vei2& pos,Graphics& gfx , Color c_letter, Col
 	gfx.PutPixel( 0 + pos.x,15 + pos.y,baseCol );
 }
 
-void SpriteCodex::DrawTile1( const Vei2& pos,Graphics& gfx, Color c_letter, Color c_TileBackground)
+void SpriteCodex::DrawTile1( const Vei2& pos,Graphics& gfx, Color c_letter, Color c_TileLineShade, Color c_Background)
 {
-	Color baseCol = c_TileBackground;
+	Color baseCol = c_TileLineShade;
 	Color digitCol = c_letter;
+	gfx.DrawRect(pos.x, pos.y, pos.x + 16, pos.y + 16, c_Background);
 
 	gfx.PutPixel( 0 + pos.x,0 + pos.y,baseCol );
 	gfx.PutPixel( 1 + pos.x,0 + pos.y,baseCol );
@@ -117,10 +119,11 @@ void SpriteCodex::DrawTile1( const Vei2& pos,Graphics& gfx, Color c_letter, Colo
 	gfx.PutPixel( 0 + pos.x,15 + pos.y,baseCol );
 }
 
-void SpriteCodex::DrawTile2( const Vei2& pos,Graphics& gfx, Color c_letter, Color c_TileBackground)
+void SpriteCodex::DrawTile2( const Vei2& pos,Graphics& gfx, Color c_letter, Color c_TileLineShade, Color c_Background)
 {
-	Color baseCol = c_TileBackground;
+	Color baseCol = c_TileLineShade;
 	Color digitCol = c_letter;
+	gfx.DrawRect(pos.x, pos.y, pos.x + 16, pos.y + 16, c_Background);
 
 	gfx.PutPixel( 0 + pos.x,0 + pos.y,baseCol );
 	gfx.PutPixel( 1 + pos.x,0 + pos.y,baseCol );
@@ -220,10 +223,11 @@ void SpriteCodex::DrawTile2( const Vei2& pos,Graphics& gfx, Color c_letter, Colo
 	gfx.PutPixel( 0 + pos.x,15 + pos.y,baseCol );
 }
 
-void SpriteCodex::DrawTile3( const Vei2& pos,Graphics& gfx, Color c_letter, Color c_TileBackground)
+void SpriteCodex::DrawTile3( const Vei2& pos,Graphics& gfx, Color c_letter, Color c_TileLineShade, Color c_Background)
 {
-	Color baseCol = c_TileBackground;
+	Color baseCol = c_TileLineShade;
 	Color digitCol = c_letter;
+	gfx.DrawRect(pos.x, pos.y, pos.x + 16, pos.y + 16, c_Background);
 
 	gfx.PutPixel( 0 + pos.x,0 + pos.y,baseCol );
 	gfx.PutPixel( 1 + pos.x,0 + pos.y,baseCol );
@@ -320,10 +324,11 @@ void SpriteCodex::DrawTile3( const Vei2& pos,Graphics& gfx, Color c_letter, Colo
 	gfx.PutPixel( 0 + pos.x,15 + pos.y,baseCol );
 }
 
-void SpriteCodex::DrawTile4( const Vei2& pos,Graphics& gfx, Color c_letter, Color c_TileBackground)
+void SpriteCodex::DrawTile4( const Vei2& pos,Graphics& gfx, Color c_letter, Color c_TileLineShade, Color c_Background)
 {
-	Color baseCol = c_TileBackground;
+	Color baseCol = c_TileLineShade;
 	Color digitCol = c_letter;
+	gfx.DrawRect(pos.x, pos.y, pos.x + 16, pos.y + 16, c_Background);
 
 	gfx.PutPixel( 0 + pos.x,0 + pos.y,baseCol );
 	gfx.PutPixel( 1 + pos.x,0 + pos.y,baseCol );
@@ -414,10 +419,11 @@ void SpriteCodex::DrawTile4( const Vei2& pos,Graphics& gfx, Color c_letter, Colo
 	gfx.PutPixel( 0 + pos.x,15 + pos.y,baseCol );
 }
 
-void SpriteCodex::DrawTile5( const Vei2& pos,Graphics& gfx, Color c_letter, Color c_TileBackground)
+void SpriteCodex::DrawTile5( const Vei2& pos,Graphics& gfx, Color c_letter, Color c_TileLineShade, Color c_Background)
 {
-	Color baseCol = c_TileBackground;
+	Color baseCol = c_TileLineShade;
 	Color digitCol = c_letter;
+	gfx.DrawRect(pos.x, pos.y, pos.x + 16, pos.y + 16, c_Background);
 
 	gfx.PutPixel( 0 + pos.x,0 + pos.y,baseCol );
 	gfx.PutPixel( 1 + pos.x,0 + pos.y,baseCol );
@@ -522,10 +528,11 @@ void SpriteCodex::DrawTile5( const Vei2& pos,Graphics& gfx, Color c_letter, Colo
 	gfx.PutPixel( 0 + pos.x,15 + pos.y,baseCol );
 }
 
-void SpriteCodex::DrawTile6( const Vei2& pos,Graphics& gfx, Color c_letter, Color c_TileBackground)
+void SpriteCodex::DrawTile6( const Vei2& pos,Graphics& gfx, Color c_letter, Color c_TileLineShade, Color c_Background)
 {
-	Color baseCol = c_TileBackground;
+	Color baseCol = c_TileLineShade;
 	Color digitCol = c_letter;
+	gfx.DrawRect(pos.x, pos.y, pos.x + 16, pos.y + 16, c_Background);
 
 	gfx.PutPixel( 0 + pos.x,0 + pos.y,baseCol );
 	gfx.PutPixel( 1 + pos.x,0 + pos.y,baseCol );
@@ -632,10 +639,11 @@ void SpriteCodex::DrawTile6( const Vei2& pos,Graphics& gfx, Color c_letter, Colo
 	gfx.PutPixel( 0 + pos.x,15 + pos.y,baseCol );
 }
 
-void SpriteCodex::DrawTile7( const Vei2& pos,Graphics& gfx, Color c_letter, Color c_TileBackground)
+void SpriteCodex::DrawTile7( const Vei2& pos,Graphics& gfx, Color c_letter, Color c_TileLineShade, Color c_Background)
 {
-	Color baseCol = c_TileBackground;
+	Color baseCol = c_TileLineShade;
 	Color digitCol = c_letter;
+	gfx.DrawRect(pos.x, pos.y, pos.x + 16, pos.y + 16, c_Background);
 
 	gfx.PutPixel( 0 + pos.x,0 + pos.y,baseCol );
 	gfx.PutPixel( 1 + pos.x,0 + pos.y,baseCol );
@@ -714,10 +722,11 @@ void SpriteCodex::DrawTile7( const Vei2& pos,Graphics& gfx, Color c_letter, Colo
 	gfx.PutPixel( 0 + pos.x,15 + pos.y,baseCol );
 }
 
-void SpriteCodex::DrawTile8( const Vei2& pos,Graphics& gfx, Color c_letter, Color c_TileBackground)
+void SpriteCodex::DrawTile8( const Vei2& pos,Graphics& gfx, Color c_letter, Color c_TileLineShade, Color c_Background)
 {
-	Color baseCol = c_TileBackground;
+	Color baseCol = c_TileLineShade;
 	Color digitCol = c_letter;
+	gfx.DrawRect(pos.x, pos.y, pos.x + 16, pos.y + 16, c_Background);
 
 	gfx.PutPixel( 0 + pos.x,0 + pos.y, baseCol );
 	gfx.PutPixel( 1 + pos.x,0 + pos.y, baseCol );
@@ -828,10 +837,11 @@ void SpriteCodex::DrawTile8( const Vei2& pos,Graphics& gfx, Color c_letter, Colo
 	gfx.PutPixel( 0 + pos.x,15 + pos.y,baseCol );
 }
 
-void SpriteCodex::DrawTile9(const Vei2& pos, Graphics& gfx, Color c_letter, Color c_TileBackground)
+void SpriteCodex::DrawTile9(const Vei2& pos, Graphics& gfx, Color c_letter, Color c_TileLineShade, Color c_Background)
 {
-	Color baseCol = c_TileBackground;
+	Color baseCol = c_TileLineShade;
 	Color digitCol = c_letter;
+	gfx.DrawRect(pos.x, pos.y, pos.x + 16, pos.y + 16, c_Background);
 
 	gfx.PutPixelTransformed(pos,0 + pos.x, 0 + pos.y, baseCol);
 	gfx.PutPixelTransformed(pos,1 + pos.x, 0 + pos.y, baseCol);
@@ -1618,20 +1628,20 @@ void SpriteCodex::DrawTileBombRed( const Vei2& pos,Graphics& gfx )
 	gfx.PutPixel( 15 + pos.x,15 + pos.y,255,0,0 );
 }
 
-void SpriteCodex::DrawTileNumber(const Vei2& pos, char n, Graphics& gfx, Color c_letter, Color c_TileBackground)
+void SpriteCodex::DrawTileNumber(const Vei2& pos, char n, Graphics& gfx, Color c_letter, Color c_TileLineShade, Color c_Background)
 {
 	switch (n)
 	{
-	case '0': SpriteCodex::DrawTile0(pos, gfx, c_letter, c_TileBackground); break;
-	case '1': SpriteCodex::DrawTile1(pos, gfx,c_letter,c_TileBackground); break;
-	case '2': SpriteCodex::DrawTile2(pos, gfx,c_letter,c_TileBackground); break;
-	case '3': SpriteCodex::DrawTile3(pos, gfx,c_letter,c_TileBackground); break;
-	case '4': SpriteCodex::DrawTile4(pos, gfx,c_letter,c_TileBackground); break;
-	case '5': SpriteCodex::DrawTile5(pos, gfx,c_letter,c_TileBackground); break;
-	case '6': SpriteCodex::DrawTile6(pos, gfx,c_letter,c_TileBackground); break;
-	case '7': SpriteCodex::DrawTile7(pos, gfx,c_letter,c_TileBackground); break;
-	case '8': SpriteCodex::DrawTile8(pos, gfx,c_letter,c_TileBackground); break;
-	case '9': SpriteCodex::DrawTile9(pos, gfx,c_letter,c_TileBackground); break;
+	case '0': SpriteCodex::DrawTile0(pos, gfx,c_letter,c_TileLineShade, c_Background); break;
+	case '1': SpriteCodex::DrawTile1(pos, gfx,c_letter,c_TileLineShade, c_Background); break;
+	case '2': SpriteCodex::DrawTile2(pos, gfx,c_letter,c_TileLineShade, c_Background); break;
+	case '3': SpriteCodex::DrawTile3(pos, gfx,c_letter,c_TileLineShade, c_Background); break;
+	case '4': SpriteCodex::DrawTile4(pos, gfx,c_letter,c_TileLineShade, c_Background); break;
+	case '5': SpriteCodex::DrawTile5(pos, gfx,c_letter,c_TileLineShade, c_Background); break;
+	case '6': SpriteCodex::DrawTile6(pos, gfx,c_letter,c_TileLineShade, c_Background); break;
+	case '7': SpriteCodex::DrawTile7(pos, gfx,c_letter,c_TileLineShade, c_Background); break;
+	case '8': SpriteCodex::DrawTile8(pos, gfx,c_letter,c_TileLineShade, c_Background); break;
+	case '9': SpriteCodex::DrawTile9(pos, gfx,c_letter,c_TileLineShade, c_Background); break;
 	}
 }
 

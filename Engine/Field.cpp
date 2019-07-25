@@ -36,7 +36,7 @@ void Field::PrintConsole() const
 	} 
 }
 
-void Field::PrintGfx(Vei2 tLeft, Graphics& gfx, Color c_letter, Color c_TileBackground)
+void Field::PrintGfx(Vei2 tLeft, Graphics& gfx )
 {
 	for (int Y = 0; Y < 9; Y++)
 	{
@@ -44,29 +44,29 @@ void Field::PrintGfx(Vei2 tLeft, Graphics& gfx, Color c_letter, Color c_TileBack
 		{
 			for (int i = 0; i < 3; i++)
 			{
-				//switch (fieldArray[(3 * X + i) + Y * 9])
-				//{
-				//SpriteCodex::DrawTileNumber(tLeft + Vei2((3 * X + i) * 16, Y * 16), '0', gfx, c_letter, c_TileBackground);
+				//Define topleft position of tile to be drawn
 				Vei2 tLeft_tile(tLeft + Vei2((3 * X + i) * 16 + X*10, Y * 16 + (Y/3)*10 ) );
 				
-
+				//If cell is empty, draw light gray background
 				if (fieldArray[(3 * X + i) + Y * 9] != '.')
 				{
 					gfx.DrawRect(tLeft_tile.x, tLeft_tile.y, tLeft_tile.x + 16, tLeft_tile.y + 16, Colors::LightGray);
 				}
 
-				
-				SpriteCodex::DrawTileNumber(tLeft_tile, fieldArray[(3 * X + i) + Y * 9],gfx,c_letter,c_TileBackground);
+				//Draw tile from solution
+				SpriteCodex::DrawTileNumber(tLeft_tile, fieldArray[(3 * X + i) + Y * 9],gfx, Colors::Red , Colors::Gray , Colors::LightGray);
+				//Draw tile from start field
+				SpriteCodex::DrawTileNumber(tLeft_tile, fieldArrayStart[(3 * X + i) + Y * 9], gfx, Colors::Green, Colors::Gray, Colors::Blue);
 
-				if (fieldArrayStart[(3 * X + i) + Y * 9] != '.')
+				for (int q = 0; q < nProblematic; q++) 
 				{
-					gfx.DrawRect(tLeft_tile.x, tLeft_tile.y, tLeft_tile.x + 16, tLeft_tile.y + 16, Colors::Blue);
+					if ((3 * X + i) + Y * 9 == iProblematic[q])
+					{
+						SpriteCodex::DrawTileNumber(tLeft_tile, fieldArrayStart[(3 * X + i) + Y * 9], gfx, Colors::White, Colors::Gray, Colors::Red);
+
+					}
 				}
-
-
-				SpriteCodex::DrawTileNumber(tLeft_tile, fieldArrayStart[(3 * X + i) + Y * 9], gfx, Colors::Green, c_TileBackground);
-
-
+			
 
 				/*case '1':
 					SpriteCodex::DrawTile1(tLeft + Vei2((3*X+i) * 16, Y * 16), gfx);
@@ -138,6 +138,37 @@ int Field::GetAvailableChars(int i, char* pArr)
 	return count;
 }
 
+bool Field::IsViable()
+{
+	for (int i = 0; i < 9 * 9 - 1; i++)
+	{
+		if (fieldArray[i] != '.')
+		{
+
+			int row = i / 9;
+			int col = i % 9;
+			int block = col / 3 + int(row / 3) * 3;
+			char ch = fieldArray[i];
+
+			if (colSubfields[col].Count(ch) > 1 ||
+				rowSubfields[row].Count(ch) > 1 ||
+				blockSubfields[block].Count(ch) > 1)
+			{
+				iProblematic[nProblematic++] = i;
+			}
+		}
+	}
+	if (nProblematic > 0)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+
 bool Field::SolutionExists(Graphics& gfx)
 {
 	for (int i = 0; i < 9 * 9; i++)
@@ -150,11 +181,11 @@ bool Field::SolutionExists(Graphics& gfx)
 			{
 				AssignCell(i, AvailableChars[k]);
 				
-				Sleep(20);
+				//Sleep(500);
 				gfx.BeginFrame();
-				PrintGfx(Vei2(100,100), gfx, Colors::Red, Colors::Gray);
+				PrintGfx(Vei2(100,100), gfx);
 				gfx.EndFrame();
-
+				
 				if (SolutionExists(gfx))
 				{
 					return true;
@@ -164,6 +195,7 @@ bool Field::SolutionExists(Graphics& gfx)
 			return false;
 		}
 	}
+	return true;
 }
 
 void Field::SubField::Print()

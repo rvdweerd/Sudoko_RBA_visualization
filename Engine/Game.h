@@ -44,6 +44,7 @@ private:
 	Graphics gfx;
 	Vei2 tLeft;
 	Field field;
+	int gameState = 1; // 0=no solution, 1=working, 2=solution found;
 	/********************************/
 	/*  User Variables              */
 	/********************************/
